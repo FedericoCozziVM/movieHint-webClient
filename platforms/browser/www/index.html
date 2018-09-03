@@ -27,7 +27,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -39,19 +39,54 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+
+    <!--cordova.js will be 404 during developement-->
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+
     <title>Hello World</title>
 </head>
 
 <body>
-    <div class="app">
+    <!--<div class="app">
         <h1>PhoneGap</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
+    </div>-->
+    <div class="container">
+        <div class="row">
+             <!--Riga  del bot-->
+            <div class="col-12 order-2 order-sm-1">
+            <!--Qui va il testo del personaggio-->                
+                <div id="botSpeech">Ciao! Come posso aiutarti?</div>
+            </div>        
+            <div class="col-12 col-sm-6 order-1 order-sm-2 offset-6">                
+                <!--Qui va l'illustrazione del personaggio-->
+                Immagine
+            </div>
+        </div>
+        <div class="row">
+            <!--Riga per input utente-->
+            <div class="col">                
+                <form id="userMsgForm" autocomplete="off">
+                  <div>
+                    <input type="text" id="userMsgInput">
+                    <input type="submit">
+                  </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+
+    
     <script type="text/javascript">
         app.initialize();
     </script>
